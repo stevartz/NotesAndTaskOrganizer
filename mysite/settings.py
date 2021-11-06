@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-ii2&rlj-h_hgl*t*#6g*+6$z@eoc)57!wl%dop(%9o9((qmn%1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://taskandnoteorganizer.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['taskandnoteorganizer.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
