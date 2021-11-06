@@ -1,0 +1,14 @@
+{% load socialaccount %}
+<!-- WE CAN CHANGE THIS PAGE OR THE FOLDER PATHS LATER -->
+<html>
+<body>
+<h1>Google Login </h1>
+{% if user.is_authenticated %}
+  <p>Welcome, You are logged in as {{ user.username }}</p>
+  <a href="{% url 'organizer:index' %}">Click here to proceed to the Assignment Organizer</a><br>
+  <p><a href="{% url 'logout' %}">Log Out</a></p>
+{% else %}
+  <a href="{% provider_login_url 'google' %}">Login with Google</a>
+{% endif %}
+</body>
+</html>

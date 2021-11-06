@@ -1,0 +1,57 @@
+{% extends 'organizer/generic_template.html' %}
+{% load bootstrap5 %}
+{% load static %}
+
+{% block content %}
+    {% if latest_class_list %}
+    <ul>
+        {% for c in latest_class_list %}
+            <h3 style="text-align:center">{{ c.course_abbr }}</h3>
+            <table class="table">
+                <thead>
+                    <tr style="text-align:center;">
+                        <th scope="col">Notes</th>
+                        <th scope="col">Assignments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if notes %}
+                        {% for n in notes %}
+                            {% if n.for_class == c.course_abbr %}
+                                <tr style="text-align:center;" >
+                                    <td>{{n.note_name}}</td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    <!-- NEED TO FIX FORMAT OF TABLE!!!! -->
+                    {% if assignments %}
+                        {% for a in assignments %}
+                            {% if a.for_class == c.course_abbr %}
+                                <tr style="text-align:center;">
+                                    <td>{{a.name}}</td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    <tr style="text-align:center;">
+                        <td><a href ="{% url 'organizer:addnote' %}">
+                            <button>Add notes</button>
+                        </a></td>
+                        <td><a href ="{% url 'organizer:addassignment' %}">
+                            <button>Add assignments</button>
+                        </a></td>
+                    </tr>
+                </tbody>
+            </table>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p style="color:black;">No classes available.</p>
+    {% endif %}
+
+    <!-- change this -->
+    <a href="{% url 'organizer:addclass' %}">Add class</a>
+
+
+{% endblock %}

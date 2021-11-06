@@ -1,0 +1,13 @@
+{% extends 'organizer/generic_template.html' %}
+{% load bootstrap5 %}
+{% load static %}
+
+{% block content %}
+<form action = "{% url 'organizer:addassignment' %}" method = "post" style="width: 75%; text-align: center">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+        <div><input type="submit" value="Submit"></div>
+    {% endbuttons %}
+</form>
+{% endblock %}
